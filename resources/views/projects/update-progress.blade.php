@@ -57,7 +57,7 @@
             
                 <div class="form-group">
                     <label for="last_report">Report Date:</label>
-                    <input type="date" class="form-control" id="last_report" name="last_report" required>
+                    <input type="date" class="form-control" id="last_report" name="last_report"  value="{{ $project->last_report }}" required>
                 </div>
             </div>
         </div>

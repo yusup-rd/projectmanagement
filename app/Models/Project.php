@@ -24,10 +24,6 @@ class Project extends Model
         'last_report',
     ];
 
-    protected $casts = [
-        'last_report' => 'datetime',
-    ];
-
     public function leadDeveloper()
     {
         return $this->belongsTo(User::class, 'lead_developer_id');

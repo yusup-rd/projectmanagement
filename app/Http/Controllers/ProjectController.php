@@ -66,19 +66,6 @@ class ProjectController extends Controller
         return redirect()->route('dashboard')->with('success', 'Project created successfully');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Project $project)
-    {
-        $project->load('lastReport');
-
-        return view('projects.show', compact('project'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit($id)
     {
         // Fetch the project by ID
@@ -93,9 +80,6 @@ class ProjectController extends Controller
             // Return the edit view for managers
             return view('projects.edit', compact('project'));
         }
-    
-        // If not authorized, redirect to dashboard or show an error
-        return redirect()->route('dashboard')->with('error', 'You are not authorized to edit this project.');
     }
 
     /**
@@ -111,7 +95,6 @@ class ProjectController extends Controller
             'duration' => 'required|numeric',
             'lead_developer_id' => 'required|exists:users,id,role,Developer',
             'other_developers' => 'array|exists:users,id,role,Developer',
-
         ]);
     
         // Update the project
@@ -135,10 +118,6 @@ class ProjectController extends Controller
     
         return redirect()->route('dashboard')->with('success', 'Project deleted successfully');
     }
-
-
-
-
 
     public function showUpdateProgressForm($id)
     {

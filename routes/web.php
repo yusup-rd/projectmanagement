@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProjectController;
-use App\Http\Controllers\Auth\LoginController;
 
 
 /*
@@ -36,4 +35,8 @@ Route::middleware(['auth', 'can:view-developer-pages'])->group(function () {
 });
 
 Route::get('/dashboard', [ProjectController::class, 'index'])->name('dashboard')->middleware('auth');
-Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+Route::get('/logout', function () {
+    Auth::logout();
+    return redirect()->route('login');
+});
