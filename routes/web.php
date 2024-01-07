@@ -22,19 +22,18 @@ Route::get('/', function () {
 
 Auth::routes();
 
-// Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
+Route::middleware(['auth', 'can:view-manager-pages'])->group(function () {
+    Route::get('/projects/create', [ProjectController::class, 'create'])->name('projects.create');
+    Route::post('/projects', [ProjectController::class, 'store'])->name('projects.store');
+    Route::get('/projects/{id}/edit', [ProjectController::class, 'edit'])->name('projects.edit');
+    Route::put('/projects/{id}', [ProjectController::class, 'update'])->name('projects.update');
+    Route::delete('/projects/{id}', [ProjectController::class, 'destroy'])->name('projects.destroy');
+});
+
+Route::middleware(['auth', 'can:view-developer-pages'])->group(function () {
+    Route::get('/projects/{id}/update-progress', [ProjectController::class, 'showUpdateProgressForm'])->name('projects.update-progress-form');
+    Route::put('/projects/{id}/update-progress', [ProjectController::class, 'updateProgress'])->name('projects.update-progress');
+});
 
 Route::get('/dashboard', [ProjectController::class, 'index'])->name('dashboard')->middleware('auth');
-Route::get('/projects/create', [ProjectController::class, 'create'])->name('projects.create');
-Route::post('/projects/store', [ProjectController::class, 'store'])->name('projects.store');
-Route::get('/projects/{id}/edit', [ProjectController::class, 'edit'])->name('projects.edit');
-Route::put('/projects/{id}/update', [ProjectController::class, 'update'])->name('projects.update');
-Route::delete('/projects/{id}/destroy', [ProjectController::class, 'destroy'])->name('projects.destroy');
-
-
-
-Route::get('/projects/{id}/update-progress', [ProjectController::class, 'showUpdateProgressForm'])->name('projects.update-progress-form');
-Route::put('/projects/{id}/update-progress', [ProjectController::class, 'updateProgress'])->name('projects.update-progress');
-
-
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
