@@ -143,6 +143,11 @@ class ProjectController extends Controller
     public function showUpdateProgressForm($id)
     {
         $project = Project::findOrFail($id);
+    
+        if (auth()->user()->id !== $project->lead_developer_id) {
+            return redirect()->route('dashboard')->with('error', 'You are not authorized to edit progress for this project.');
+        }
+    
         return view('projects.update-progress', compact('project'));
     }
 
