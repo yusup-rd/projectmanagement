@@ -7,18 +7,14 @@
         <p>Welcome, {{ auth()->user()->name }}!</p>
     @endif
     <div class="table-responsive">
-        <table class="table table-striped table-bordered">
+        <table class="table table-striped table-bordered table-rounded">
             <thead class="thead-dark">
                 <tr>
-                    <th>Project Name</th>
-                    <th>Business Unit</th>
-                    <th>Start Date</th>
-                    <th>Duration</th>
-                    <th>End Date</th>
-                    <th>Lead Developer</th>
-                    <th>Other Developers</th>
-                    <th>Info</th>
-                    <th>Status</th>
+                    <th>Project</th>
+                    <th>Dates</th>
+                    <th>Team</th>
+                    <th>Details</th>
+                    <th>Progress</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -26,36 +22,37 @@
                 @if(isset($projects))
                 @foreach($projects as $project)
                 <tr>
-                    <td>{{ $project->project_name }}</td>
-                    <td>{{ $project->business_unit_name }}</td>
-                    <td>{{ $project->start_date }}</td>
-                    <td>{{ $project->duration }} days</td>
-                    <td>{{ $project->end_date }}</td>
-                    <td>{{ $project->leadDeveloper->name }}</td>
                     <td>
-                        @foreach($project->developers as $developer)
+                        <p class="font-weight-bold">{{ $project->project_name }}</p>
+                        <p class="text-muted">{{ $project->business_unit_name }}</p>
+                    </td>
+                    <td>
+                        <strong>Start Date:</strong> {{ $project->start_date }}<br><br>
+                        <strong>Duration:</strong> {{ $project->duration }} days<br><br>
+                        <strong>End Date:</strong> {{ $project->end_date ?: 'Not set' }}
+                    </td>
+                    <td>
+                        <strong>PIC:</strong> {{ $project->pic->name }}<br><br>
+                        <strong>Lead Developer:</strong> {{ $project->leadDeveloper->name }}<br><br>
+                        <strong>Other Developers:</strong>
+                        @forelse($project->developers as $developer)
                             {{ $developer->name }}<br>
-                        @endforeach
+                        @empty
+                            None
+                        @endforelse
                     </td>
                     <td>
-                        @if($project)
-                            <div>
-                                <strong>Methodology:</strong>
-                                {{ $project->development_methodology ?: 'Not set' }}<br/>
-                                <strong>Platform:</strong>
-                                {{ $project->system_platform ?: 'Not set' }}<br/>
-                                <strong>Deployment:</strong>
-                                {{ $project->deployment_type ?: 'Not set' }}<br/>
-                            </div>
-                        @endif
+                        <strong>Methodology:</strong> {{ $project->development_methodology ?: 'Not set' }}<br><br>
+                        <strong>Platform:</strong> {{ $project->system_platform ?: 'Not set' }}<br><br>
+                        <strong>Deployment:</strong> {{ $project->deployment_type ?: 'Not set' }}
                     </td>
                     <td>
-                        <div>
-                            <p>{{ $project->status}}</p>
-                            <p>{{ $project->last_report ? 'Last Update: ' . \Carbon\Carbon::parse($project->last_report)->format('Y-M-d') : 'Not set' }}</p>
-                        </div>
+                        <strong>Status:</strong> {{ $project->status?: 'No status' }}<br><br>
+                        <strong>Last Update:</strong> {{ $project->last_report ?: 'No updates' }}<br><br>
+                        <strong>Description:</strong>
+                        <p class="text-break">{{ $project->description ?: 'No description' }}</p>
                     </td>
-                    <td>                    
+                    <td class="align-middle text-center">                    
                         @if(auth()->user()->isLeadDeveloper())
                             @if($project->lead_developer_id === auth()->user()->id)
                                 <a href="{{ route('projects.update-progress-form', $project->id) }}" class="btn btn-primary">Update Progress</a>
@@ -76,7 +73,7 @@
                 </tr>
                 @endforeach
                 @endif
-            </tbody>
+            </tbody>                             
         </table>
     </div>
 </div>

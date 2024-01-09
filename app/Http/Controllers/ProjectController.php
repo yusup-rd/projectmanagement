@@ -36,8 +36,9 @@ class ProjectController extends Controller
     public function create()
     {
         $developers = User::where('role', 'Developer')->get();
+        $managers = User::where('role','Manager')->get();
 
-        return view('projects.create', compact('developers'));
+        return view('projects.create', compact('developers', 'managers'));
     }
 
     /**
@@ -50,13 +51,16 @@ class ProjectController extends Controller
             'business_unit_name' => 'required',
             'start_date' => 'required|date',
             'duration' => 'required|numeric',
+            'pic_id' => 'required|exists:users,id,role,Manager',
             'lead_developer_id' => 'required|exists:users,id,role,Developer',
             'other_developers' => 'array|exists:users,id,role,Developer',
             'last_report' => 'nullable|date',
+            'description' => 'nullable|string',
         ]);
 
         $project = Project::create($validatedData);
 
+        $project->pic_id = $request->input('pic_id');
         $project->lead_developer_id = $request->input('lead_developer_id');
 
         if ($request->has('other_developers')) {
@@ -73,8 +77,9 @@ class ProjectController extends Controller
         
         // Fetch developers
         $developers = User::where('role', 'Developer')->get();
+        $managers = User::where('role','Manager')->get();
 
-        return view('projects.edit', compact('project', 'developers'));
+        return view('projects.edit', compact('project', 'developers', 'managers'));
 
         if (auth()->user()->isManager()) {
             // Return the edit view for managers
@@ -93,6 +98,7 @@ class ProjectController extends Controller
             'business_unit_name' => 'required',
             'start_date' => 'required|date',
             'duration' => 'required|numeric',
+            'pic_id' => 'required|exists:users,id,role,Manager',
             'lead_developer_id' => 'required|exists:users,id,role,Developer',
             'other_developers' => 'array|exists:users,id,role,Developer',
         ]);
@@ -142,6 +148,7 @@ class ProjectController extends Controller
             'deployment_type' => 'required|in:Cloud,On-premises',
             'status' => 'required|in:Ahead of Schedule,On Schedule,Delayed,Completed',
             'last_report' => 'nullable|date',
+            'description' => 'required|string',
         ]);
 
         // Update the project with the validated data

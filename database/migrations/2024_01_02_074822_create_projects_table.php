@@ -19,15 +19,18 @@ return new class extends Migration
             $table->integer('duration'); 
             $table->date('end_date')->nullable();
             $table->unsignedBigInteger('lead_developer_id');
+            $table->unsignedBigInteger('pic_id');
             $table->enum('development_methodology', ['Agile Development', 'DevOps Deployment', 'Waterfall Development', 'Rapid Application Development'])->nullable();
             $table->enum('system_platform', ['Web-based App', 'Mobile App', 'Stand-alone App'])->nullable();
             $table->enum('deployment_type', ['Cloud', 'On-premises'])->nullable();
             $table->enum('status', ['Ahead of Schedule', 'On Schedule', 'Delayed', 'Completed'])->nullable();
             $table->date('last_report')->nullable();
+            $table->text('description')->nullable();
             $table->timestamps();
         
             // Foreign key relationship
             $table->foreign('lead_developer_id')->references('id')->on('users');
+            $table->foreign('pic_id')->references('id')->on('users');
         });
     }
 

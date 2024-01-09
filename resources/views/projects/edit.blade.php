@@ -27,6 +27,17 @@
             </div>
 
             <div class="form-group">
+                <label for="pic_id">PIC:</label>
+                <select class="form-control" id="pic_id" name="pic_id" required>
+                    @foreach($managers as $manager)
+                        <option value="{{ $manager->id }}" {{ $manager->id == $project->pic_id ? 'selected' : '' }}>
+                            {{ $manager->name }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="form-group">
                 <label for="lead_developer_id">Lead Developer:</label>
                 <select class="form-control" id="lead_developer_id" name="lead_developer_id" required>
                     @foreach($developers as $developer)
@@ -41,7 +52,7 @@
                 <label for="other_developers">Other Developers (optional):</label>
                 <select class="form-control" id="other_developers" name="other_developers[]" multiple>
                     @foreach($developers as $developer)
-                        <option value="{{ $developer->id }}" {{ in_array($developer->id, $project->developers->pluck('id')->toArray()) ? 'selected' : '' }}>
+                        <option value="{{ $developer->id }}" {{ in_array($developer->id, $project->developers->pluck('id')->toArray()) ? 'selected' : '' }} {{ $developer->id == $project->lead_developer_id ? 'disabled' : '' }}>
                             {{ $developer->name }}
                         </option>
                     @endforeach
@@ -64,10 +75,20 @@
                     option.disabled = developerId === leadDeveloperId;
                     option.style.color = option.disabled ? 'gray' : '';
                 });
-                otherDevelopersSelect.value = []; 
+    
+                // Preserve selected developers based on project data
+                var selectedDevelopers = {!! json_encode($project->developers->pluck('id')->toArray()) !!};
+                selectedDevelopers.forEach(function (developerId) {
+                    var option = otherDevelopersSelect.querySelector('option[value="' + developerId + '"]');
+                    if (option) {
+                        option.selected = true;
+                    }
+                });
             }
+    
             leadDeveloperSelect.addEventListener('change', updateOtherDevelopersSelect);
-            updateOtherDevelopersSelect(); 
+            updateOtherDevelopersSelect();
         });
     </script>
+    
 @endsection

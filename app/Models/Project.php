@@ -15,6 +15,7 @@ class Project extends Model
         'business_unit_name',
         'start_date',
         'duration',
+        'pic_id',
         'lead_developer_id',
         'status',
         'end_date',
@@ -22,6 +23,7 @@ class Project extends Model
         'system_platform',
         'deployment_type',
         'last_report',
+        'description',
     ];
 
     public function leadDeveloper()
@@ -32,5 +34,10 @@ class Project extends Model
     public function developers()
     {
         return $this->belongsToMany(User::class, 'project_user', 'project_id', 'user_id');
+    }
+
+    public function pic()
+    {
+        return $this->belongsTo(User::class,'pic_id');
     }
 }

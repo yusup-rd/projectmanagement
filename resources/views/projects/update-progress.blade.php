@@ -53,6 +53,11 @@
                         <option value="Completed" {{ $project->status == 'Completed' ? 'selected' : '' }}>Completed</option>
                     </select>
                 </div>
+
+                <div class="form-group">
+                    <label for="description">Description:</label>
+                    <textarea class="form-control" style="resize: none; height: 124px;" id="description" name="description" rows="4" required>{{ $project->description }}</textarea>
+                </div>
                 
             
                 <div class="form-group">
@@ -61,8 +66,8 @@
                 </div>
             </div>
         </div>
-
-        <button type="submit" class="btn btn-primary">Update Progress</button>
+        
+        <button type="submit" class="btn btn-primary float-right">Update Progress</button>
     </form>
 </div>
 @endsection

@@ -26,6 +26,15 @@
             </div>
 
             <div class="form-group">
+                <label for="pic_id">PIC:</label>
+                <select class="form-control" id="pic_id" name="pic_id" required>
+                    @foreach($managers as $manager)
+                        <option value="{{ $manager->id }}">{{ $manager->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="form-group">
                 <label for="lead_developer_id">Lead Developer:</label>
                 <select class="form-control" id="lead_developer_id" name="lead_developer_id" required>
                     @foreach($developers as $developer)
