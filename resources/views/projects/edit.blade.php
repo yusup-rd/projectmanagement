@@ -51,4 +51,23 @@
             <button type="submit" class="btn btn-primary">Update Project</button>
         </form>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var leadDeveloperSelect = document.getElementById('lead_developer_id');
+            var otherDevelopersSelect = document.getElementById('other_developers');
+    
+            function updateOtherDevelopersSelect() {
+                var leadDeveloperId = leadDeveloperSelect.value;
+                Array.from(otherDevelopersSelect.options).forEach(function (option) {
+                    var developerId = option.value;
+                    option.disabled = developerId === leadDeveloperId;
+                    option.style.color = option.disabled ? 'gray' : '';
+                });
+                otherDevelopersSelect.value = []; 
+            }
+            leadDeveloperSelect.addEventListener('change', updateOtherDevelopersSelect);
+            updateOtherDevelopersSelect(); 
+        });
+    </script>
 @endsection
