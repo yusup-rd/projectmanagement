@@ -1,15 +1,6 @@
 # Software Project Management System (SPMS)
 > Final Project for Advanced Web Development on Laravel.
 
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
-
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
-
 ## Overview
 
 The Project Management System is a web-based application designed to streamline project management tasks, allowing teams to collaborate effectively, track project progress, and manage tasks efficiently.
@@ -93,38 +84,31 @@ The Project Management System is a web-based application designed to streamline 
 ## Screenshots
 
 ### 1. Logged Out Page
-![Logged Out](![Picture1](https://github.com/yusup-rd/projectmanagement/assets/71926209/d9de46e9-9aee-458c-a114-e076afece2a2)
-)
+![Logged Out](https://github.com/yusup-rd/projectmanagement/assets/71926209/d9de46e9-9aee-458c-a114-e076afece2a2)
 
 ### 2. Login Page
-![Login](![Picture3](https://github.com/yusup-rd/projectmanagement/assets/71926209/755f4274-f98f-4075-aa50-90acbae5480a)
-)
+![Login](https://github.com/yusup-rd/projectmanagement/assets/71926209/755f4274-f98f-4075-aa50-90acbae5480a)
 
 ### 3. Registration Page
-![Registration](![Picture2](https://github.com/yusup-rd/projectmanagement/assets/71926209/447665cd-6163-47b2-9132-cf1c11d98c93)
-)
+![Registration](https://github.com/yusup-rd/projectmanagement/assets/71926209/447665cd-6163-47b2-9132-cf1c11d98c93)
 
 ### 4. Manager Dashboard
-![Manager Dashboard](![Picture4](https://github.com/yusup-rd/projectmanagement/assets/71926209/dfda3c04-fbe9-47b6-9a35-70307b3eee3b)
-)
+![Manager Dashboard](https://github.com/yusup-rd/projectmanagement/assets/71926209/dfda3c04-fbe9-47b6-9a35-70307b3eee3b)
 
 ### 5. Developer Dashboard
-![Developer Dashboard](![Picture10](https://github.com/yusup-rd/projectmanagement/assets/71926209/713904ff-2068-4cef-8741-e1d59ca22e09)
-)
-![Developer Dashboard](![Picture7](https://github.com/yusup-rd/projectmanagement/assets/71926209/53b293e3-b543-4250-847f-1b1c3b5e663b))
+![Developer Dashboard 1](https://github.com/yusup-rd/projectmanagement/assets/71926209/713904ff-2068-4cef-8741-e1d59ca22e09)
+
+![Developer Dashboard 2](https://github.com/yusup-rd/projectmanagement/assets/71926209/53b293e3-b543-4250-847f-1b1c3b5e663b)
 
 
 ### 6. Manager Add New Project Page
-![Manager Add New Project](![Picture5](https://github.com/yusup-rd/projectmanagement/assets/71926209/75bebb45-cf7b-4c9b-b54a-1f7888dc0cb2)
-)
+![Manager Add New Project](https://github.com/yusup-rd/projectmanagement/assets/71926209/75bebb45-cf7b-4c9b-b54a-1f7888dc0cb2)
 
 ### 7. Manager Edit Project Page
-![Manager Edit Project](![Picture6](https://github.com/yusup-rd/projectmanagement/assets/71926209/8e35f78f-3b01-4f86-8280-6a93360f739a)
-)
+![Manager Edit Project](https://github.com/yusup-rd/projectmanagement/assets/71926209/8e35f78f-3b01-4f86-8280-6a93360f739a)
 
 ### 8. Developer Update Progress Page
-![Developer Update Progress](![Picture9](https://github.com/yusup-rd/projectmanagement/assets/71926209/57f03517-097d-415a-b914-cbb83cbde7bb)
-)
+![Developer Update Progress](https://github.com/yusup-rd/projectmanagement/assets/71926209/57f03517-097d-415a-b914-cbb83cbde7bb)
 
 ## License
 
