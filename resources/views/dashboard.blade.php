@@ -64,7 +64,7 @@
                             <form action="{{ route('projects.destroy', $project->id) }}" method="POST" style="display: inline;">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-custom-width">Delete</button>
+                                <button type="submit" class="btn btn-danger btn-custom-width" onclick="confirmDelete({{ $project->id }})">Delete</button>
                             </form>
                         @else
                             <p>No Action Allowed</p>
@@ -77,4 +77,15 @@
         </table>
     </div>
 </div>
+
+<script>
+    function confirmDelete(projectId) {
+        var result = confirm("Are you sure you want to delete this project?");
+        if (result) {
+            // If user confirms, proceed with the deletion
+            window.location.href = "{{ url('projects/destroy') }}" + "/" + projectId;
+        }
+    }
+</script>
+
 @endsection
