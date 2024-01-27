@@ -10,7 +10,6 @@ The Project Management System is a web-based application designed to streamline 
 - [Features](#features)
 - [Usage](#usage)
 - [Screenshots](#screenshots)
-- [License](#license)
 
 ## Features
 
@@ -110,9 +109,6 @@ The Project Management System is a web-based application designed to streamline 
 ### 8. Developer Update Progress Page
 ![Developer Update Progress](https://github.com/yusup-rd/projectmanagement/assets/71926209/57f03517-097d-415a-b914-cbb83cbde7bb)
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
