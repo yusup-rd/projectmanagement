@@ -81,10 +81,16 @@
 <script>
     function confirmDelete(projectId) {
         var result = confirm("Are you sure you want to delete this project?");
-        if (result) {
-            // If user confirms, proceed with the deletion
-            window.location.href = "{{ url('projects/destroy') }}" + "/" + projectId;
+        if (!result) {
+            if (event.preventDefault) {
+                event.preventDefault();
+            } else {
+                event.returnValue = false;
+            }
+            return false;
         }
+        window.location.href = "{{ url('projects/destroy') }}" + "/" + projectId;
+        return true;
     }
 </script>
 
